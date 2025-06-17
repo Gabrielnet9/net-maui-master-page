@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MasterPage.Views.PartialViews.Home"
+             xmlns:models="clr-namespace:MasterPage.Models"
+             xmlns:viewModels="clr-namespace:MasterPage.ViewModels.PartialViewModels"
+             xmlns:fonts="clr-namespace:Fonts"
+             x:DataType="viewModels:HomeViewModel">
+       
+    <Grid Padding="10">
+        <CollectionView ItemsSource="{Binding Monkeys}">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Monkey">
+                    <Border HeightRequest="100" Padding="0">
+                        <Grid ColumnDefinitions="Auto,*">
+                            <Image Grid.Column="0" Source="{Binding Image}"/>
+                            <Grid Grid.Column="1" RowDefinitions="*,*,*,*" Padding="8">
+                                <Label Grid.Row="0" Text="{Binding Name}"/>
+                                <Label Grid.Row="1" Text="{Binding Population}"/>
+                                <Label Grid.Row="2" Text="{Binding Location}"/>
+                                <Label Grid.Row="3" Text="{Binding Details}"/>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentView>

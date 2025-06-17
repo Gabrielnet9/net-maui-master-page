@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MasterPage.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:sf="clr-namespace:Syncfusion.Maui.Toolkit.SegmentedControl;assembly=Syncfusion.Maui.Toolkit"
+    xmlns:local="clr-namespace:MasterPage.Views"
+    xmlns:fonts="clr-namespace:Fonts"
+    Shell.FlyoutBehavior="Flyout"
+    FlyoutBackdrop="#90000000"
+    Title="MasterPage">
+
+    <Shell.FlyoutHeader>
+        <Image Source="dotnet_bot.png"/>
+    </Shell.FlyoutHeader>
+
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage">
+        <ShellContent.Icon>
+            <FontImageSource 
+                            Glyph="{x:Static fonts:IconFontOutlined.Home}" 
+                            FontFamily="{StaticResource GoogleMaterialIconOutlinedRegular}"
+                            Color="{StaticResource Gray500}"/>
+        </ShellContent.Icon>
+    </ShellContent>
+
+    <ShellContent
+        Title=".NET MAUI Page"
+        ContentTemplate="{DataTemplate local:OrderPage}"
+        Route="OrderPage" >
+        <ShellContent.Icon>
+            <FontImageSource 
+                            Glyph="{x:Static fonts:IconFontOutlined.Code}" 
+                            FontFamily="{StaticResource GoogleMaterialIconOutlinedRegular}"
+                            Color="{StaticResource Gray500}"/>
+        </ShellContent.Icon>
+    </ShellContent>
+
+</Shell>

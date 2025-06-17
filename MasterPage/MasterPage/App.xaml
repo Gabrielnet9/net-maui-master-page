@@ -1,0 +1,62 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MasterPage"
+             x:Class="MasterPage.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+                <ResourceDictionary Source="Resources/Styles/AppStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <!--#region Custom Styles-->
+            <!--UI Color-->
+            <Color x:Key="Primary90Transparent">#90512BD4</Color>
+            <Color x:Key="Secondary90Transparent">#99512BD4</Color>
+            <!--UI Icon Fonts-->
+            <x:String x:Key="GoogleMaterialIconOutlinedRegular">MaterialIconsOutlinedRegular</x:String>
+            <x:String x:Key="GoogleWebfonts">WebFonts</x:String>
+            <x:String x:Key="GoogleMaterialIconRegular">MaterialIconsRegular</x:String>
+
+            <!--Custom Styles-->
+            <Style TargetType="Label" x:Key="PageTitle">
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Tertiary}, Dark={StaticResource Primary}}" />
+                <Setter Property="HorizontalTextAlignment" Value="Start"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="FontSize" Value="24" />
+            </Style>
+
+            <Style TargetType="Label" x:Key="MenuIcon">
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Tertiary}, Dark={StaticResource Primary}}" />
+                <Setter Property="FontSize" Value="40"/>
+                <Setter Property="FontFamily" Value="{StaticResource GoogleMaterialIconOutlinedRegular}"/>
+                <Setter Property="HorizontalTextAlignment" Value="Start"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+            </Style>
+
+            <Style TargetType="Label" x:Key="LabelIcon">
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray950}}" />
+                <Setter Property="FontSize" Value="40"/>
+                <Setter Property="FontFamily" Value="{StaticResource GoogleMaterialIconOutlinedRegular}"/>
+                <Setter Property="HeightRequest" Value="55"/>
+                <Setter Property="WidthRequest" Value="55"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="Margin" Value="0"/>
+                <Setter Property="Padding" Value="0"/>
+            </Style>
+
+            <Style TargetType="BoxView" x:Key="LabelIconSelector">
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource  Primary}, Dark={StaticResource Primary}}" />
+                <Setter Property="CornerRadius" Value="8,8,8,8"/>
+                <Setter Property="HeightRequest" Value="50"/>
+                <Setter Property="WidthRequest" Value="50"/>
+            </Style>
+
+            <!--#region -->
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
