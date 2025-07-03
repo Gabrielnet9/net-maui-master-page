@@ -37,23 +37,33 @@
             </Style>
 
             <Style TargetType="Label" x:Key="LabelIcon">
-                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray950}}" />
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray500}}" />
                 <Setter Property="FontSize" Value="40"/>
                 <Setter Property="FontFamily" Value="{StaticResource GoogleMaterialIconOutlinedRegular}"/>
                 <Setter Property="HeightRequest" Value="55"/>
                 <Setter Property="WidthRequest" Value="55"/>
                 <Setter Property="VerticalTextAlignment" Value="Center"/>
                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
                 <Setter Property="HorizontalOptions" Value="Center"/>
                 <Setter Property="Margin" Value="0"/>
                 <Setter Property="Padding" Value="0"/>
             </Style>
 
             <Style TargetType="BoxView" x:Key="LabelIconSelector">
-                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource  Primary}, Dark={StaticResource Primary}}" />
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light=#50000000 ,Dark=#30ecf0f9}" />
                 <Setter Property="CornerRadius" Value="8,8,8,8"/>
-                <Setter Property="HeightRequest" Value="50"/>
-                <Setter Property="WidthRequest" Value="50"/>
+                <Setter Property="HeightRequest" Value="45"/>
+                <Setter Property="WidthRequest" Value="45"/>
+            </Style>
+
+            <Style TargetType="Border" x:Key="NavBar">
+                <Setter Property="Background" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Primary}}" />
+                <Setter Property="StrokeShape" Value="RoundRectangle 10 10 10 10"/>
+                <Setter Property="HeightRequest" Value="60"/>
+                <Setter Property="Margin" Value="15"/>
+                <Setter Property="Padding" Value="5"/>
+                <Setter Property="VerticalOptions" Value="End"/>
             </Style>
 
             <!--#region -->

@@ -5,21 +5,23 @@
              Shell.NavBarIsVisible="False"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:sf="clr-namespace:Syncfusion.Maui.Toolkit.SegmentedControl;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:skia="clr-namespace:MasterPage.Customs"
              xmlns:fonts="clr-namespace:Fonts">
-    
+
     <ContentPage.Behaviors>
         <toolkit:StatusBarBehavior StatusBarColor="{StaticResource Tertiary}" StatusBarStyle="LightContent" />
     </ContentPage.Behaviors>
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*" />
-            <RowDefinition Height="0.9*" />
+            <RowDefinition Height="0.8*" />
+            <RowDefinition Height="0.1*" />
         </Grid.RowDefinitions>
 
         <!--Header-->
         <Grid Grid.Row="0" Margin="0" ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10" Padding="10">
-            
+
             <Label Grid.Column="0"
                    Style="{StaticResource MenuIcon}"
                    Text="{x:Static fonts:IconFontOutlined.Menu}">
@@ -48,24 +50,31 @@
             </Grid>
         </Grid>
 
-        <Grid Grid.Row="1">
-            <!--Content-->
-            <ContentPresenter x:Name="body"/>
+        <!--Content-->
+        <ContentPresenter x:Name="body" Grid.Row="1"/>
 
-            <!--Footer-->
-            <Border Background="{StaticResource Secondary90Transparent}" HeightRequest="60" StrokeShape="RoundRectangle 10 10 10 10" Margin="10" Padding="5" VerticalOptions="End">
+        <!--Footer-->
+        <Border Grid.Row="2" Style="{StaticResource NavBar}" Padding="0" Background="{AppThemeBinding Light=White,Dark=Black}">
+            <Grid>
+              
+                <skia:FrostedGlassView x:Name="canvas"/>
 
                 <Grid ColumnDefinitions="*,*,*,*" x:Name="footer">
 
-                    <BoxView Grid.Column="0"
-                             Style="{StaticResource LabelIconSelector}"
-                             x:Name="selector"/>
+
+                    <BoxView 
+                        BackgroundColor="Transparent"
+                        Style="{StaticResource LabelIconSelector}"
+                        x:Name="preSelector"/>
+
+                    <BoxView 
+                        Style="{StaticResource LabelIconSelector}"
+                        x:Name="selector"/>
 
                     <Label Grid.Column="0"
                            x:Name="homebtn" 
                            Style="{StaticResource LabelIcon}"
-                           Text="{x:Static fonts:IconFontOutlined.Home}"
-                           VerticalTextAlignment="Center">
+                           Text="{x:Static fonts:IconFontOutlined.Home}">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Home_Clicked"/>
                         </Label.GestureRecognizers>
@@ -73,8 +82,7 @@
 
                     <Label Grid.Column="1"
                            Style="{StaticResource LabelIcon}"
-                           Text="{x:Static fonts:IconFontOutlined.Message}" 
-                           FontFamily="{StaticResource GoogleMaterialIconOutlinedRegular}">
+                           Text="{x:Static fonts:IconFontOutlined.Message}">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Message_Clicked"/>
                         </Label.GestureRecognizers>
@@ -82,8 +90,7 @@
 
                     <Label Grid.Column="2"
                            Style="{StaticResource LabelIcon}"
-                           Text="{x:Static fonts:IconFontOutlined.Person}" 
-                           FontFamily="{StaticResource GoogleMaterialIconOutlinedRegular}">
+                           Text="{x:Static fonts:IconFontOutlined.Person}">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="profile_Clicked"/>
                         </Label.GestureRecognizers>
@@ -91,14 +98,77 @@
 
                     <Label Grid.Column="3"
                            Style="{StaticResource LabelIcon}"
-                           Text="{x:Static fonts:IconFontOutlined.Settings}" 
-                           FontFamily="{StaticResource GoogleMaterialIconOutlinedRegular}">
+                           Text="{x:Static fonts:IconFontOutlined.Settings}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Settings_Clicked"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Grid>
+            </Grid>
+
+        </Border>
+
+        <!--<Grid Grid.Row="1" BackgroundColor="Transparent">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.9*"/>
+                <RowDefinition Height="0.1*"/>
+            </Grid.RowDefinitions>
+
+            -->
+        <!--Content-->
+        <!--
+            <ContentPresenter x:Name="body" Grid.Row="0"/>
+
+            -->
+        <!--Footer-->
+        <!--
+            <Border Grid.Row="1" Style="{StaticResource NavBar}">
+                <Grid ColumnDefinitions="*,*,*,*" x:Name="footer">
+
+                    <BoxView 
+                        BackgroundColor="Transparent"
+                        Style="{StaticResource LabelIconSelector}"
+                        x:Name="preSelector"/>
+                    
+                    <BoxView 
+                        Style="{StaticResource LabelIconSelector}"
+                        BackgroundColor="#30ecf0f9"
+                        x:Name="selector"/>
+
+                    <Label Grid.Column="0"
+                           x:Name="homebtn" 
+                           Style="{StaticResource LabelIcon}"
+                           Text="{x:Static fonts:IconFontOutlined.Home}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Home_Clicked"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                    <Label Grid.Column="1"
+                           Style="{StaticResource LabelIcon}"
+                           Text="{x:Static fonts:IconFontOutlined.Message}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Message_Clicked"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                    <Label Grid.Column="2"
+                           Style="{StaticResource LabelIcon}"
+                           Text="{x:Static fonts:IconFontOutlined.Person}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="profile_Clicked"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                    <Label Grid.Column="3"
+                           Style="{StaticResource LabelIcon}"
+                           Text="{x:Static fonts:IconFontOutlined.Settings}">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Settings_Clicked"/>
                         </Label.GestureRecognizers>
                     </Label>
                 </Grid>
             </Border>
-        </Grid>
+        </Grid>-->
     </Grid>
 </ContentPage>

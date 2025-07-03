@@ -5,16 +5,11 @@ namespace MasterPage.Views.PartialViews;
 
 public partial class Home : ContentView
 {
-	public Home()
+	private readonly HomeViewModel _viewModel;
+    public Home(HomeViewModel viewModel)
 	{
 		InitializeComponent();
-        this.Loaded += Home_Loaded;
-	}
-
-    private async void Home_Loaded(object? sender, EventArgs e)
-    {
-		var viewmodel = new HomeViewModel();
-		await viewmodel.GetMonkeysAsync();
-		BindingContext = viewmodel;
+        _viewModel = viewModel;
+        BindingContext = _viewModel;
     }
 }

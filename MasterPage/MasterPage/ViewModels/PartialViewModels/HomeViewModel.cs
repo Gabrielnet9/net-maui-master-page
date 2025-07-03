@@ -1,5 +1,4 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using MasterPage.Models;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
@@ -29,6 +28,9 @@ namespace MasterPage.ViewModels.PartialViewModels
             }
 
             Monkeys = [.. list];
+
+            await stream.DisposeAsync();
+            reader.Dispose();
         }
     }
 }

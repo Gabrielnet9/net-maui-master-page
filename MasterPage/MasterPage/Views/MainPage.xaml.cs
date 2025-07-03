@@ -1,28 +1,23 @@
+using MasterPage.ViewModels.PartialViewModels;
 using MasterPage.Views.PartialViews;
 
 namespace MasterPage.Views;
 
 public partial class MainPage : ContentPage
 {
+    private readonly HomeViewModel homeViewModel;
     public MainPage()
     {
         InitializeComponent();
         var currentTheme = Application.Current!.RequestedTheme;
         ThemeSegmentedControl.SelectedIndex = currentTheme == AppTheme.Light ? 0 : 1;
+        homeViewModel = new HomeViewModel();
     }
 
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        LoadInitialView();
-
-        await Task.Delay(2000);
-
-        MainThread.BeginInvokeOnMainThread(async () =>
-        {
-            await UpdatePageAsync(homebtn, new Home());
-            selector.IsVisible = true;
-        });
+        await LoadInitialViewAsync();
     }
 
     private void SfSegmentedControl_SelectionChanged(object sender, Syncfusion.Maui.Toolkit.SegmentedControl.SelectionChangedEventArgs e)
@@ -33,7 +28,7 @@ public partial class MainPage : ContentPage
     private async void Home_Clicked(object sender, TappedEventArgs e)
     {
         var label = (Label)sender;
-        await UpdatePageAsync(label, new Home());
+        await UpdatePageAsync(label, new Home(homeViewModel));
     }
 
     private async void profile_Clicked(object sender, TappedEventArgs e)
@@ -56,16 +51,18 @@ public partial class MainPage : ContentPage
 
     async Task UpdatePageAsync(Label? currentLabel, ContentView? partialView)
     {
+        SetBodyLoadingState();
+
         if (partialView != null)
         {
+            viewTitle.Text = partialView.GetType().Name;
+            ResetNavButton();
+
+            await UpdateUI(currentLabel);
+
             await body.Content.FadeTo(0, 100);
             body.Content = partialView;
             body.Content.Opacity = 0;
-
-            ResetNavButton();
-            await UpdateUI(currentLabel);
-
-            viewTitle.Text = partialView.GetType().Name;
 
             await body.Content.FadeTo(1, 100);
         }
@@ -82,22 +79,50 @@ public partial class MainPage : ContentPage
         if (currentLabel is null)
             return;
 
-        currentLabel.TextColor = Colors.White;
+        var activeLabelColor = Color.FromArgb("#512BD4");
 
+        currentLabel.TextColor = activeLabelColor;
         int currentColumn = (int)currentLabel.GetValue(Grid.ColumnProperty);
 
-        selector.SetValue(Grid.ColumnProperty, currentColumn);
+        preSelector.SetValue(Grid.ColumnProperty, currentColumn);
 
-        await selector.ScaleTo(1.2, 150, Easing.BounceIn);
-        await selector.ScaleTo(1, 150, Easing.BounceOut);
+        await UpdateSelector();
     }
 
-    void LoadInitialView()
+    async Task UpdateSelector()
+    {
+        await Task.Delay(150);
+
+        // Get positions of both BoxViews relative to the grid
+        var preSelectorLocation = preSelector.GetBoundsRelativeTo(footer).Location;
+        var selectorLocation = selector.GetBoundsRelativeTo(footer).Location;
+
+        // Calculate difference
+        double dx = preSelectorLocation.X - selectorLocation.X;
+        double dy = preSelectorLocation.Y - selectorLocation.Y;
+
+        // Translate selectot to preSelector's position
+        await selector.TranslateTo(dx, dy, 450, Easing.SinInOut);
+    }
+
+    async Task LoadInitialViewAsync()
     {
         selector.IsVisible = false;
 
         ResetNavButton();
 
+        SetBodyLoadingState();
+
+        await UpdatePageAsync(homebtn, new Home(homeViewModel));
+
+        await homeViewModel.GetMonkeysAsync();
+
+        selector.IsVisible = true;
+        await UpdateSelector();
+    }
+
+    void SetBodyLoadingState()
+    {
         var activity = new ActivityIndicator()
         {
             IsRunning = true,
@@ -121,7 +146,7 @@ public partial class MainPage : ContentPage
                 continue;
             }
 
-            label.TextColor = Color.FromArgb("#212121");
+            label.TextColor = Color.FromArgb("#919191");
         }
     }
 

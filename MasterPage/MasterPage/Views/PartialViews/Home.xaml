@@ -8,7 +8,7 @@
              x:DataType="viewModels:HomeViewModel">
        
     <Grid Padding="10">
-        <CollectionView ItemsSource="{Binding Monkeys}">
+        <CollectionView ItemsSource="{Binding Monkeys}" VerticalScrollBarVisibility="Never">
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
             </CollectionView.ItemsLayout>
@@ -18,10 +18,10 @@
                         <Grid ColumnDefinitions="Auto,*">
                             <Image Grid.Column="0" Source="{Binding Image}"/>
                             <Grid Grid.Column="1" RowDefinitions="*,*,*,*" Padding="8">
-                                <Label Grid.Row="0" Text="{Binding Name}"/>
-                                <Label Grid.Row="1" Text="{Binding Population}"/>
-                                <Label Grid.Row="2" Text="{Binding Location}"/>
-                                <Label Grid.Row="3" Text="{Binding Details}"/>
+                                <Label Grid.Row="0" Text="{Binding Name}" Style="{StaticResource Body1Strong}"/>
+                                <Label Grid.Row="1" Text="{Binding Population}" Style="{StaticResource Caption1}"/>
+                                <Label Grid.Row="2" Text="{Binding Location}" Style="{StaticResource Body2}"/>
+                                <Label Grid.Row="3" Text="{Binding Details}" Style="{StaticResource Caption1}"/>
                             </Grid>
                         </Grid>
                     </Border>
