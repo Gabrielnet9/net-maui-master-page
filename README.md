@@ -23,3 +23,7 @@ By leveraging a master page in conjunction with other pages within a Shell appli
 Library used
 - Skiasharp: for blurred background of the NavBar
 - Built-in NET MAUI Libraries
+
+Resources
+- Monkeydata.json from James Montemagno ([https://github.com/jamesmontemagno](https://github.com/jamesmontemagno/app-monkeys/blob/master/MonkeysApp/monkeydata.json))
+- Monkey Data UI from Gerald Versluis ([https://github.com/jfversluis](https://github.com/jfversluis/MonkeyFinder2))
