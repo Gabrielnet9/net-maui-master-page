@@ -1,3 +1,5 @@
+Custom UI Structuring in .NET MAUI: Master Page with Partial Views
+
 .NET MAUI Master Page with Partial Views
 This project demonstrates an alternative approach to UI structuring in .NET MAUI applications, focusing on the integration of a master page with partial views instead of the default Shell TabbedPage.
 
