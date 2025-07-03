@@ -1,16 +1,17 @@
 Custom UI Structuring in .NET MAUI: Master Page with Partial Views as Tabs
 
 iOS Light
-![iOS Light](https://github.com/user-attachments/assets/facb506f-c673-4273-96b1-fcc7fbeb2215)
+![iOS Light](https://github.com/user-attachments/assets/77ad7b1e-b82a-4096-bc00-407130f46608)
 
 Android Light
-![Android Light](https://github.com/user-attachments/assets/26f1a311-729e-41aa-83e7-c87bdfe913b0)
+![Android Light](https://github.com/user-attachments/assets/67605eed-96ad-43cd-bdec-9ba10ccf0ed4)
 
 iOS Dark
-![iOS Dark](https://github.com/user-attachments/assets/fc981190-a082-465f-8b86-e950980f194b)
+![iOS Dark](https://github.com/user-attachments/assets/b0004838-ad54-41c1-b384-5ed79208d9db)
 
 Android Dark
-![Android Dark](https://github.com/user-attachments/assets/dd958dc6-482d-4c2b-980f-af184f7f708c)
+![Android Dark](https://github.com/user-attachments/assets/9a2b1d00-e6f1-4f35-baa1-fca1f90a54db)
+
 
 
 This project presents an alternative approach to UI structuring in .NET MAUI applications, emphasizing the integration of a master page with partial views as a flexible substitute for the default Shell TabbedPage.
