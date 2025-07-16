@@ -1,6 +1,5 @@
 Custom UI Structuring in .NET MAUI: Master Page with Partial Views as Tabs
 
-View Models Update
 Each partial view needs its own view model, feel free to adjust how you will inject your view models.
 This is mostly a UI project
 
