@@ -1,5 +1,9 @@
 Custom UI Structuring in .NET MAUI: Master Page with Partial Views as Tabs
 
+View Models Update
+Each partial view needs its own view model, feel free to adjust how you will inject your view models.
+This is mostly a UI project
+
 iOS Light
 ![iOS Light](https://github.com/user-attachments/assets/77ad7b1e-b82a-4096-bc00-407130f46608)
 
