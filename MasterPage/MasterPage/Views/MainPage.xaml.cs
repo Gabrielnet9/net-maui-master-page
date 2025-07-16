@@ -6,12 +6,22 @@ namespace MasterPage.Views;
 public partial class MainPage : ContentPage
 {
     private readonly HomeViewModel homeViewModel;
+    private readonly SettingsViewModel settingsViewModel;
+    private readonly ProfileViewModel profileViewModel;
+    private readonly MessageViewModel messageViewModel;
     public MainPage()
     {
         InitializeComponent();
         var currentTheme = Application.Current!.RequestedTheme;
         ThemeSegmentedControl.SelectedIndex = currentTheme == AppTheme.Light ? 0 : 1;
+
+        // each partial view needs its own view model
         homeViewModel = new HomeViewModel();
+        settingsViewModel = new SettingsViewModel();
+        profileViewModel = new ProfileViewModel();
+        messageViewModel = new MessageViewModel();
+        // feel free to adjust how you will inject your view models.
+        // This is mostly a UI project
     }
 
     protected override async void OnAppearing()
@@ -34,19 +44,19 @@ public partial class MainPage : ContentPage
     private async void profile_Clicked(object sender, TappedEventArgs e)
     {
         var label = (Label)sender;
-        await UpdatePageAsync(label, new Profile());
+        await UpdatePageAsync(label, new Profile(profileViewModel));
     }
 
     private async void Message_Clicked(object sender, TappedEventArgs e)
     {
         var label = (Label)sender;
-        await UpdatePageAsync(label, new Message());
+        await UpdatePageAsync(label, new Message(messageViewModel));
     }
 
     private async void Settings_Clicked(object sender, TappedEventArgs e)
     {
         var label = (Label)sender;
-        await UpdatePageAsync(label, new Settings());
+        await UpdatePageAsync(label, new Settings(settingsViewModel));
     }
 
     async Task UpdatePageAsync(Label? currentLabel, ContentView? partialView)

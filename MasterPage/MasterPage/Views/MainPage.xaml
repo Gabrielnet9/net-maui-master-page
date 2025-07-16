@@ -56,7 +56,7 @@
         <!--Footer-->
         <Border Grid.Row="2" Style="{StaticResource NavBar}" Padding="0" Background="{AppThemeBinding Light=White,Dark=Black}">
             <Grid>
-              
+
                 <skia:FrostedGlassView x:Name="canvas"/>
 
                 <Grid ColumnDefinitions="*,*,*,*" x:Name="footer">
@@ -107,68 +107,5 @@
             </Grid>
 
         </Border>
-
-        <!--<Grid Grid.Row="1" BackgroundColor="Transparent">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="0.9*"/>
-                <RowDefinition Height="0.1*"/>
-            </Grid.RowDefinitions>
-
-            -->
-        <!--Content-->
-        <!--
-            <ContentPresenter x:Name="body" Grid.Row="0"/>
-
-            -->
-        <!--Footer-->
-        <!--
-            <Border Grid.Row="1" Style="{StaticResource NavBar}">
-                <Grid ColumnDefinitions="*,*,*,*" x:Name="footer">
-
-                    <BoxView 
-                        BackgroundColor="Transparent"
-                        Style="{StaticResource LabelIconSelector}"
-                        x:Name="preSelector"/>
-                    
-                    <BoxView 
-                        Style="{StaticResource LabelIconSelector}"
-                        BackgroundColor="#30ecf0f9"
-                        x:Name="selector"/>
-
-                    <Label Grid.Column="0"
-                           x:Name="homebtn" 
-                           Style="{StaticResource LabelIcon}"
-                           Text="{x:Static fonts:IconFontOutlined.Home}">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="Home_Clicked"/>
-                        </Label.GestureRecognizers>
-                    </Label>
-
-                    <Label Grid.Column="1"
-                           Style="{StaticResource LabelIcon}"
-                           Text="{x:Static fonts:IconFontOutlined.Message}">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="Message_Clicked"/>
-                        </Label.GestureRecognizers>
-                    </Label>
-
-                    <Label Grid.Column="2"
-                           Style="{StaticResource LabelIcon}"
-                           Text="{x:Static fonts:IconFontOutlined.Person}">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="profile_Clicked"/>
-                        </Label.GestureRecognizers>
-                    </Label>
-
-                    <Label Grid.Column="3"
-                           Style="{StaticResource LabelIcon}"
-                           Text="{x:Static fonts:IconFontOutlined.Settings}">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="Settings_Clicked"/>
-                        </Label.GestureRecognizers>
-                    </Label>
-                </Grid>
-            </Border>
-        </Grid>-->
     </Grid>
 </ContentPage>
